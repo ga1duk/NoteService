@@ -29,20 +29,32 @@ class NoteService {
 
     }
 
-    fun edit() {
-
+    fun edit(id: Int, title: String, text: String) {
+        for (note in notes) {
+            if (id == note.id) {
+                note.title = title
+                note.text = text
+            }
+        }
     }
 
     fun editComment() {
 
     }
 
-    fun getAllNotes() {
-
+    fun getAllNotes(): List<Note>? {
+        return notes.ifEmpty {
+            null
+        }
     }
 
-    fun getById() {
-
+    fun getById(id: Int): Note? {
+        for (note in notes) {
+            if(id == note.id) {
+                return note
+            }
+        }
+        return null
     }
 
     fun getComments() {
