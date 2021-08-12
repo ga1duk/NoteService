@@ -61,7 +61,7 @@ class NoteService {
         for (note in notes) {
             if (noteId == note.id) {
                 for (comment in note.comments) {
-                    if (comment.id == commentId) {
+                    if (comment.id == commentId && !comment.isDeleted) {
                         comment.text = text
                     }
                 }
@@ -85,8 +85,21 @@ class NoteService {
     }
 
     fun getComments(id: Int): List<Comment>? {
+//      Создаём список comments
+        val comments = mutableListOf<Comment>()
         for (note in notes) {
             if (note.id == id) {
+//      Проходимся по всем элементам коллекции note.comments
+//      и на каждом шаге проверяем значение поля isDeleted у комментария
+//      Если оно равно false (т.е. комментарий не удалён, то добавляем этот комментарий в список comments
+                for (comment in note.comments) {
+                    if (!comment.isDeleted) {
+                        comments.add(comment)
+                    }
+                }
+//      Переносим все значения из списка comments в список note.commets (В список попадают только неудалённые
+//      элементы и возвращаем этот список
+                note.comments = comments.toMutableList()
                 return note.comments
             }
         }

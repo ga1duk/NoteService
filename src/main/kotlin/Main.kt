@@ -58,12 +58,14 @@ fun main() {
     )
 
     println("\nУдаление комментария:")
-    noteService.deleteComment(2, 2)
+    noteService.deleteComment(2, 1)
     println(noteService.notes[0])
 
     println("\nВосстановление комментария:")
-    noteService.restoreComment(2, 2)
+    noteService.restoreComment(2, 1)
     println(noteService.notes[0])
 
 
+    println("\nПолучаем комментарии по заданному id (все, кроме удалённых):")
+    println(noteService.getComments(2))
 }
