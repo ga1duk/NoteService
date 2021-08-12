@@ -50,4 +50,10 @@ fun main() {
     println("\nРедактирование комментария")
     noteService.editComment(2, 1, "Hahahahahahahahha...That's crazy!")
     println(noteService.notes[0])
+
+    println("\nСписок комментариев к заметке с заданным id:")
+    println(
+        "1)${noteService.getComments(2)?.get(0)?.text}" +
+                "\n2)${noteService.getComments(2)?.get(1)?.text} "
+    )
 }

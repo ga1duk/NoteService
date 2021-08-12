@@ -76,8 +76,13 @@ class NoteService {
         return null
     }
 
-    fun getComments() {
-
+    fun getComments(id: Int): List<Comment>? {
+        for (note in notes) {
+            if (note.id == id) {
+                return note.comments
+            }
+        }
+        return null
     }
 
     fun restoreComment() {
