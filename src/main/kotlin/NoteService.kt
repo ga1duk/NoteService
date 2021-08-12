@@ -36,8 +36,16 @@ class NoteService {
         }
     }
 
-    fun deleteComment() {
-
+    fun deleteComment(noteId: Int, commentId: Int) {
+        for (note in notes) {
+            if (noteId == note.id) {
+                for (comment in note.comments) {
+                    if (comment.id == commentId && !comment.isDeleted) {
+                        comment.isDeleted = true
+                    }
+                }
+            }
+        }
     }
 
     fun edit(id: Int, title: String, text: String) {
@@ -85,7 +93,15 @@ class NoteService {
         return null
     }
 
-    fun restoreComment() {
-
+    fun restoreComment(noteId: Int, commentId: Int) {
+        for (note in notes) {
+            if (noteId == note.id) {
+                for (comment in note.comments) {
+                    if (comment.id == commentId && comment.isDeleted) {
+                        comment.isDeleted = false
+                    }
+                }
+            }
+        }
     }
 }

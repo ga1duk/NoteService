@@ -47,7 +47,7 @@ fun main() {
         println(note)
     }
 
-    println("\nРедактирование комментария")
+    println("\nРедактирование комментария:")
     noteService.editComment(2, 1, "Hahahahahahahahha...That's crazy!")
     println(noteService.notes[0])
 
@@ -56,4 +56,14 @@ fun main() {
         "1)${noteService.getComments(2)?.get(0)?.text}" +
                 "\n2)${noteService.getComments(2)?.get(1)?.text} "
     )
+
+    println("\nУдаление комментария:")
+    noteService.deleteComment(2, 2)
+    println(noteService.notes[0])
+
+    println("\nВосстановление комментария:")
+    noteService.restoreComment(2, 2)
+    println(noteService.notes[0])
+
+
 }

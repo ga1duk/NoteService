@@ -5,5 +5,6 @@ data class Comment(
     val canPost: Boolean = true,
     val groupsCanPost: Boolean = false,
     val canClose: Boolean = true,
-    val canOpen: Boolean = true
+    val canOpen: Boolean = true,
+    var isDeleted: Boolean = false
 )
