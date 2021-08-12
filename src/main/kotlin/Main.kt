@@ -46,4 +46,8 @@ fun main() {
     for (note in noteService.notes) {
         println(note)
     }
+
+    println("\nРедактирование комментария")
+    noteService.editComment(2, 1, "Hahahahahahahahha...That's crazy!")
+    println(noteService.notes[0])
 }

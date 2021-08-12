@@ -16,12 +16,12 @@ class NoteService {
     fun createComment(id: Int, comment: Comment) {
         for (note in notes) {
             if (id == note.id) {
-//        Если список пустой, присвоить полю count значение 1, если список не пустой,
-//        присвоить полю count значение на 1 больше, чем у поля count последнего комментария в списке
+//        Если список пустой, присвоить полю id значение 1, если список не пустой,
+//        присвоить полю id значение на 1 больше, чем у поля id последнего комментария в списке
                 if (note.comments.isEmpty()) {
-                    comment.count = 1
+                    comment.id = 1
                 } else {
-                    comment.count = note.comments.last().count + 1
+                    comment.id = note.comments.last().id + 1
                 }
                 note.comments.add(comment)
             }
@@ -49,8 +49,16 @@ class NoteService {
         }
     }
 
-    fun editComment() {
-
+    fun editComment(noteId: Int, commentId: Int, text: String) {
+        for (note in notes) {
+            if (noteId == note.id) {
+                for (comment in note.comments) {
+                    if (comment.id == commentId) {
+                        comment.text = text
+                    }
+                }
+            }
+        }
     }
 
     fun getAllNotes(): List<Note>? {
