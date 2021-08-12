@@ -1,8 +1,11 @@
 fun main() {
 
-    val note1 = Note(title = "Do or die1", text = "Some interesting text1")
-    val note2 = Note(title = "Do or die2", text = "Some interesting text2")
-    val note3 = Note(title = "Do or die3", text = "Some interesting text3")
+    val note1 = Note(title = "Do or die1", text = "Some interesting text1", comments = mutableListOf<Comment>())
+    val note2 = Note(title = "Do or die2", text = "Some interesting text2", comments = mutableListOf<Comment>())
+    val note3 = Note(title = "Do or die3", text = "Some interesting text3", comments = mutableListOf<Comment>())
+
+    val comment1 = Comment(text = "Hmmmm....Very interesting...")
+    val comment2 = Comment(text = "Aaaaarrggghhh...It's awful")
 
     val noteService = NoteService()
 
@@ -36,4 +39,11 @@ fun main() {
 
     println("\nПолучение заметки по id")
     println(noteService.getById(2))
+
+    println("\nДобавление комментария к записи:")
+    noteService.createComment(2, comment1)
+    noteService.createComment(2, comment2)
+    for (note in noteService.notes) {
+        println(note)
+    }
 }

@@ -13,8 +13,19 @@ class NoteService {
         notes.add(note)
     }
 
-    fun createComment() {
-
+    fun createComment(id: Int, comment: Comment) {
+        for (note in notes) {
+            if (id == note.id) {
+//        Если список пустой, присвоить полю count значение 1, если список не пустой,
+//        присвоить полю count значение на 1 больше, чем у поля count последнего комментария в списке
+                if (note.comments.isEmpty()) {
+                    comment.count = 1
+                } else {
+                    comment.count = note.comments.last().count + 1
+                }
+                note.comments.add(comment)
+            }
+        }
     }
 
     fun delete(id: Int) {
@@ -50,7 +61,7 @@ class NoteService {
 
     fun getById(id: Int): Note? {
         for (note in notes) {
-            if(id == note.id) {
+            if (id == note.id) {
                 return note
             }
         }
