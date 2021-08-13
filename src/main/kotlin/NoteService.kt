@@ -29,9 +29,10 @@ class NoteService {
     }
 
     fun delete(id: Int) {
-        for (note in notes) {
-            if (id == note.id) {
-                notes.remove(note)
+        val iterator = notes.iterator()
+        while (iterator.hasNext()) {
+            if (id == iterator.next().id) {
+                iterator.remove()
             }
         }
     }
@@ -84,11 +85,11 @@ class NoteService {
         return null
     }
 
-    fun getComments(id: Int): List<Comment>? {
+    fun getComments(noteId: Int): List<Comment>? {
 //      Создаём список comments
         val comments = mutableListOf<Comment>()
         for (note in notes) {
-            if (note.id == id) {
+            if (note.id == noteId) {
 //      Проходимся по всем элементам коллекции note.comments
 //      и на каждом шаге проверяем значение поля isDeleted у комментария
 //      Если оно равно false (т.е. комментарий не удалён, то добавляем этот комментарий в список comments

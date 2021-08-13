@@ -1,5 +1,4 @@
 fun main() {
-
     val note1 = Note(title = "Do or die1", text = "Some interesting text1", comments = mutableListOf<Comment>())
     val note2 = Note(title = "Do or die2", text = "Some interesting text2", comments = mutableListOf<Comment>())
     val note3 = Note(title = "Do or die3", text = "Some interesting text3", comments = mutableListOf<Comment>())
@@ -64,7 +63,6 @@ fun main() {
     println("\nВосстановление комментария:")
     noteService.restoreComment(2, 1)
     println(noteService.notes[0])
-
 
     println("\nПолучаем комментарии по заданному id (все, кроме удалённых):")
     println(noteService.getComments(2))
